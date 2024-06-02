@@ -18,7 +18,7 @@ public class Product {
     private double price;
     private int quantity;
     @OneToMany
-    private List<Sale> saleList;
+    private List<Sale> sales;
 }
 
 
