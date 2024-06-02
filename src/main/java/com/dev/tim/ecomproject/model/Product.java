@@ -1,9 +1,10 @@
 package com.dev.tim.ecomproject.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,4 +17,16 @@ public class Product {
     private String description;
     private double price;
     private int quantity;
+    @OneToMany
+    private List<Sale> saleList;
 }
+
+
+
+/*
+*
+*   Product     Sales
+*   1           M
+*   M            1
+*
+* */
