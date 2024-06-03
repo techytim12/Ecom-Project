@@ -19,14 +19,14 @@ public class Product {
     private int quantity;
     @OneToMany
     private List<Sale> sales;
+
+    public Product(){}
+
+    public Product(int id, String name, String description, double price, int quantity) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+    }
 }
-
-
-
-/*
-*
-*   Product     Sales
-*   1           M
-*   M            1
-*
-* */

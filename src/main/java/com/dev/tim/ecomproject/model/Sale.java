@@ -18,4 +18,12 @@ public class Sale {
     private int quantity;
     private LocalDate saleDate;
     private double amount;
+
+    public Sale(int id, int productId, int quantity, LocalDate saleDate, double amount) {
+        this.id = id;
+        this.productId = productId;
+        this.quantity = quantity;
+        this.saleDate = saleDate;
+        this.amount = amount;
+    }
 }
