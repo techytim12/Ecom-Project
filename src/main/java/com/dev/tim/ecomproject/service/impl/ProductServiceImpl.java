@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -17,7 +18,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        List<Product> allProducts =  productRepository.findAll();
+        if(allProducts.isEmpty()){
+            throw new ProductNotFoundException("No Products found!");
+        }
+        return allProducts;
     }
 
     @Override
