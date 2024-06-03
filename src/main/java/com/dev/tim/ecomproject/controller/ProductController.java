@@ -4,6 +4,7 @@ import com.dev.tim.ecomproject.model.Product;
 import com.dev.tim.ecomproject.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +38,8 @@ public class ProductController {
     }
 
     @DeleteMapping("/admin/{id}")
-    public void deleteProduct(@PathVariable int id){
+    public ResponseEntity<Void> deleteProduct(@PathVariable int id) {
         productService.deleteProduct(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

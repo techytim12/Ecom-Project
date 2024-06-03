@@ -17,27 +17,19 @@ public class SaleServiceImpl implements SaleService {
 
     @Override
     public double getTotalRevenue() {
-        List<Sale> allSales = saleRepository.findAll();
-
-        double totalRevenue = 0;
-        for(Sale sale : allSales){
-            totalRevenue += sale.getAmount();
-        }
-
-        return totalRevenue;
+        return saleRepository.findAll()
+                .stream()
+                .mapToDouble(Sale::getAmount)
+                .sum();
     }
 
     @Override
     public double getRevenueByProduct(int productId) {
 
-        List<Sale> saleProducts = saleRepository.findAllByProductId(productId);
-
-        double saleAmount = 0;
-        for(Sale sale : saleProducts){
-            saleAmount += sale.getAmount();
-        }
-
-        return saleAmount;
+        return saleRepository.findAllByProductId(productId)
+                .stream()
+                .mapToDouble(Sale::getAmount)
+                .sum();
     }
 
     public Sale addSale(Sale sale){

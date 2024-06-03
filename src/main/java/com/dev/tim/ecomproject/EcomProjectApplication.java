@@ -43,6 +43,6 @@ public class EcomProjectApplication implements CommandLineRunner {
 		saleService.addSale(sale3);
 
 		System.out.println("Total Revenue: " + saleService.getTotalRevenue());
-		System.out.println("Revenue for Product 1: " + saleService.getRevenueByProduct(1));
+		System.out.println("Revenue for Product 2: " + saleService.getRevenueByProduct(2));
 	}
 }
