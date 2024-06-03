@@ -5,6 +5,8 @@ import com.dev.tim.ecomproject.model.Product;
 import com.dev.tim.ecomproject.repository.ProductRepository;
 import com.dev.tim.ecomproject.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,12 +19,12 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Override
-    public List<Product> getAllProducts() {
-        List<Product> allProducts =  productRepository.findAll();
-        if(allProducts.isEmpty()){
+    public Page<Product> getAllProducts(int offset, int pageSize) {
+        Page<Product> productPage = productRepository.findAll(PageRequest.of(offset, pageSize));
+        if(productPage.isEmpty()){
             throw new ProductNotFoundException("No Products found!");
         }
-        return allProducts;
+        return productPage;
     }
 
     @Override

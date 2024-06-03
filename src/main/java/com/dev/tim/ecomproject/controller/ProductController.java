@@ -3,6 +3,7 @@ package com.dev.tim.ecomproject.controller;
 import com.dev.tim.ecomproject.model.Product;
 import com.dev.tim.ecomproject.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +16,9 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/")
-    public ResponseEntity<List<Product>> getAllProducts(){
-        return ResponseEntity.ok(productService.getAllProducts());
+    @GetMapping("/{offset}/{pageSize}")
+    public ResponseEntity<Page<Product>> getAllProducts(@PathVariable int offset, @PathVariable int pageSize){
+        return ResponseEntity.ok(productService.getAllProducts(offset, pageSize));
     }
 
     @GetMapping("/{id}")
