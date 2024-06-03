@@ -30,7 +30,7 @@ public class SaleServiceImpl implements SaleService {
     @Override
     public double getRevenueByProduct(int productId) {
 
-        List<Sale> saleProducts = saleRepository.findAllById(productId);
+        List<Sale> saleProducts = saleRepository.findAllByProductId(productId);
 
         double saleAmount = 0;
         for(Sale sale : saleProducts){
@@ -38,5 +38,9 @@ public class SaleServiceImpl implements SaleService {
         }
 
         return saleAmount;
+    }
+
+    public Sale addSale(Sale sale){
+        return saleRepository.save(sale);
     }
 }

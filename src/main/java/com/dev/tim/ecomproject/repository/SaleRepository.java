@@ -11,4 +11,5 @@ import java.util.List;
 public interface SaleRepository extends JpaRepository<Sale, Integer> {
 
     List<Sale> findAllById(int productId);
+    List<Sale> findAllByProductId(int productId);
 }

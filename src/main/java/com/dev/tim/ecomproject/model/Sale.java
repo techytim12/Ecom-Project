@@ -19,6 +19,8 @@ public class Sale {
     private LocalDate saleDate;
     private double amount;
 
+    public Sale(){}
+
     public Sale(int id, int productId, int quantity, LocalDate saleDate, double amount) {
         this.id = id;
         this.productId = productId;
