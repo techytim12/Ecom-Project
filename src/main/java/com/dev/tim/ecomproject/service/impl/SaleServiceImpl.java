@@ -12,8 +12,11 @@ import java.util.List;
 @Service
 public class SaleServiceImpl implements SaleService {
 
-    @Autowired
-    private SaleRepository saleRepository;
+    private final SaleRepository saleRepository;
+
+    public SaleServiceImpl(SaleRepository saleRepository) {
+        this.saleRepository = saleRepository;
+    }
 
     @Override
     public double getTotalRevenue() {

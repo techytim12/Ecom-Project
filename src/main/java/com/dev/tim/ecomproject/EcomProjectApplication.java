@@ -15,11 +15,13 @@ import java.time.LocalDate;
 @SpringBootApplication()
 public class EcomProjectApplication implements CommandLineRunner {
 
-	@Autowired
-	private ProductService productService;
+	private final ProductService productService;
+	private final SaleService saleService;
 
-	@Autowired
-	private SaleService saleService;
+	public EcomProjectApplication(ProductService productService, SaleService saleService) {
+		this.productService = productService;
+		this.saleService = saleService;
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(EcomProjectApplication.class, args);

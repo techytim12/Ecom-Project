@@ -14,8 +14,11 @@ import java.util.List;
 @RequestMapping("/api/products")
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping("/{offset}/{pageSize}")
     public ResponseEntity<Page<Product>> getAllProducts(@PathVariable int offset, @PathVariable int pageSize){
